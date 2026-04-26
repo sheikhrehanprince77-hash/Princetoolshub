@@ -109,7 +109,7 @@ const DATA = {
       title: "CapCut Pro", variant: "Pro", badge: "Video",
       desc: "Premium effects, transitions, and templates.",
       note: "Account is delivered ready-to-use.",
-      plans: [{ months: 1, price: 556 }, { months: 6, price: 3061 }],
+      plans: [{ months: 1, price: 550 }, { months: 6, price: 3061 }],
     },
     {
       id: "youtube", category: "musiqi", image: "assets/youtube.png", currency: "PKR",
