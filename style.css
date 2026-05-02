@@ -652,76 +652,49 @@ body.hide-top-panel .top {
 .gmBigLogo { font-size: 70px; margin-bottom: 15px; filter: drop-shadow(0 0 30px rgba(212,175,55,0.5)); animation: floatLogo 2s ease-in-out infinite alternate;}
 @keyframes floatLogo { from {transform: translateY(-5px);} to {transform: translateY(5px);} }
 
-.chatFab {
-    position: fixed; bottom: 24px; right: 24px; width: 62px; height: 62px; border-radius: 50%;
-    background: linear-gradient(135deg, #006b38, #004d26);
-    border: 1px solid rgba(212, 175, 55, 0.5); color: #D4AF37;
-    font-size: 0 !important; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999;
-    box-shadow: 0 10px 30px rgba(0, 107, 56, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.2);
-    animation: fabGlowPulse 3s infinite ease-in-out; transition: transform 0.25s ease, box-shadow 0.25s ease;
+/* =========================
+   WHATSAPP DÜYMƏSİ (ANIMASİYALI)
+   ========================= */
+.whatsappFab {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    border: 2px solid rgba(212, 175, 55, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.2);
+    animation: waGlowPulse 2.5s infinite ease-in-out;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    text-decoration: none;
 }
-.chatFab::before { content: "\1F916"; font-size: 24px; margin-bottom: 2px; line-height: 1; filter: sepia(1) hue-rotate(10deg) saturate(3);}
-.chatFab::after { content: "BOT"; font-size: 9px; font-weight: 900; line-height: 1; color: #D4AF37; text-transform: uppercase; letter-spacing: 1px;}
-.chatFab:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0, 107, 56, 0.6), 0 0 20px rgba(212,175,55,0.3); }
-.chatFab:active { transform: scale(0.97); }
-
-@keyframes fabGlowPulse {
-    0% { box-shadow: 0 10px 30px rgba(0, 107, 56, 0.3), 0 0 0 rgba(212,175,55,0); }
-    50% { box-shadow: 0 10px 30px rgba(0, 107, 56, 0.5), 0 0 20px rgba(212,175,55,0.4); }
-    100% { box-shadow: 0 10px 30px rgba(0, 107, 56, 0.3), 0 0 0 rgba(212,175,55,0); }
+.whatsappFab svg {
+    width: 36px;
+    height: 36px;
+    fill: #fff;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+    margin-left: 2px;
+    margin-top: 2px;
 }
-
-.chatBox {
-    position: fixed; right: 16px; bottom: 92px; width: min(380px, 92vw); height: 580px; border-radius: 20px;
-    border: 1px solid rgba(212, 175, 55, 0.3); background: rgba(2, 26, 15, 0.95); backdrop-filter: blur(25px);
-    box-shadow: 0 20px 65px rgba(0, 0, 0, 0.8), inset 0 0 25px rgba(212, 175, 55, 0.05);
-    overflow: hidden; display: none; flex-direction: column; z-index: 9999;
+.whatsappFab:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6), 0 0 20px rgba(212, 175, 55, 0.5);
+    border-color: #D4AF37;
 }
-.chatBox.open, .chatBox.show { display: flex; }
-
-.chatHead {
-    padding: 16px; background: linear-gradient(135deg, rgba(0, 107, 56, 0.4), rgba(2, 26, 15, 0.9));
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2); display: flex; align-items: center; justify-content: space-between; gap: 12px;
-}
-.chatTitle { font-weight: 800; color: #D4AF37; letter-spacing: 0.6px; font-size: 16px; text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
-.chatSub { font-size: 12px; color: rgba(255, 255, 255, 0.6); margin-top: 2px; font-weight: 500; }
-.chatClose {
-    width: 36px; height: 36px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); background: rgba(212, 175, 55, 0.1);
-    color: #D4AF37; cursor: pointer; display: grid; place-items: center; font-weight: 800; transition: 0.2s ease;
-}
-.chatClose:hover { background: rgba(212, 175, 55, 0.25); color: #fff; transform: rotate(90deg); }
-
-.chatMsgs {
-    flex: 1; padding: 16px; overflow: auto; -webkit-overflow-scrolling: touch;
-    background: linear-gradient(180deg, rgba(2, 26, 15, 0.8), rgba(0, 0, 0, 0.6)); border-top: 1px solid rgba(212, 175, 55, 0.05);
-}
-.msg {
-    position: relative; max-width: 85%; padding: 12px 16px; border-radius: 18px; margin: 10px 0;
-    line-height: 1.45; font-size: 14px; box-shadow: 0 5px 15px rgba(0,0,0,0.4); border: 1px solid rgba(212,175,55,0.1); white-space: pre-wrap;
-}
-.msg.bot {
-    background: linear-gradient(135deg, rgba(4, 46, 27, 0.9), rgba(2, 26, 15, 0.9)); color: rgba(255, 255, 255, 0.95);
-    border-color: rgba(212, 175, 55, 0.2); border-radius: 18px 18px 18px 4px; display: flex; flex-direction: column; gap: 4px;
-}
-.msg.bot::before { content: "\1F916 Princetoolshub Bot"; font-size: 11px; font-weight: 700; opacity: 0.9; color: #D4AF37; margin-bottom: 2px; }
-.msg.user {
-    margin-left: auto; background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.08));
-    color: #D4AF37; font-weight: 500; border-color: rgba(212, 175, 55, 0.4); border-radius: 18px 18px 4px 18px;
+.whatsappFab:active {
+    transform: scale(0.95);
 }
 
-.chatInput { display: flex; gap: 10px; padding: 12px 16px; border-top: 1px solid rgba(212, 175, 55, 0.2); background: rgba(2, 26, 15, 0.9); }
-.chatText {
-    flex: 1; border: 1px solid rgba(212, 175, 55, 0.25); background: rgba(0, 0, 0, 0.4); color: #fff; padding: 12px; border-radius: 14px;
-    outline: none; font-family: inherit; font-size: 13px; transition: 0.2s ease;
+@keyframes waGlowPulse {
+    0% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3), 0 0 0 rgba(212, 175, 55, 0); }
+    50% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6), 0 0 25px rgba(212, 175, 55, 0.4); }
+    100% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3), 0 0 0 rgba(212, 175, 55, 0); }
 }
-.chatText:focus { border-color: #D4AF37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
-.chatText::placeholder { color: rgba(212,175,55,.4); }
-
-.chatSend {
-    border: none; background: linear-gradient(135deg, #D4AF37, #b5952f); color: #021a0f; font-weight: 800; padding: 12px 18px;
-    border-radius: 14px; cursor: pointer; font-family: inherit; transition: 0.2s ease;
-}
-.chatSend:hover { filter: brightness(1.1); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3); }
 
 /* =========================
    RESPONSIVE FIXES (Mobile & Tablet)
@@ -790,6 +763,18 @@ body.hide-top-panel .top {
   .bundleFab, .gameFab { height: 40px; padding: 0 14px; font-size: 12px; border-radius: 20px; }
   .bundleFab { bottom: 12px; left: 12px; }
   .gameFab { bottom: 60px; left: 12px; }
+  
+  /* Mobil üçün WhatsApp düyməsi ölçüsü */
+  .whatsappFab {
+    width: 52px;
+    height: 52px;
+    right: 16px;
+    bottom: 16px;
+  }
+  .whatsappFab svg {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 /* =========================================================
